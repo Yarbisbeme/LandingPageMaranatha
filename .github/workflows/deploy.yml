@@ -28,4 +28,4 @@ jobs:
         run: npm install -g surge
 
       - name: Desplegar en Surge
-        run: surge ./dist unsuitable-distance.surge.sh --token ${{ secrets.SURGE_TOKEN }}
+        run: surge ./dist sananosmaranatasurge.sh --token ${{ secrets.SURGE_TOKEN }}
