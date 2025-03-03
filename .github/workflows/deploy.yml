@@ -1,33 +1,30 @@
-name: Deploy Astro to surge
+name: Deploy to Surge
 
 on:
-  push:
-    branches:
-      - feauture/home
+    push:
+        branches:
+            - main  # Se ejecuta cuando hagas push en la rama main
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - name: Clonar repositorio
-        uses: actions/checkout@v4
+    deploy:
+        runs-on: ubuntu-latest
 
-      - name: Instalar Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: 'npm'
+        steps:
+            - uses: actions/checkout@v4
 
-      - name: Instalar dependencias
-        run: npm install
+            - name: Install Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: '14'
 
-      - name: Generar el sitio estático
-        run: npm run build
-      
-      - name: instalar surge
-        run: npm install -g surge
-      
-      - name: Desplegar en Surge
-        run: surge ./dist unsuitable-distance.surge.sh --token ${{ secrets.SURGE_TOKEN }}
+            - name: Install dependencies
+              run: npm install
+
+            - name: Build
+              run: npm run build
+            
+            - name: Instalar Surge
+              run: npm install -g surge
+
+            - name: Deploy
+              run: surge ./dist unsuitable-distance.surge.sh --token ${{ secrets.SURGE_TOKEN }}
