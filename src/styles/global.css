@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+
 @theme {
     --color-avocado-100: oklch(0.99 0 0);
     --color-back: "#f1f0eb";
