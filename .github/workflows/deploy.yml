@@ -1,9 +1,9 @@
-name: Deploy Astro to GitHub Pages
+name: Deploy Astro to surge
 
 on:
   push:
     branches:
-      - feature/home
+      - feauture/deploy
 
 jobs:
   deploy:
@@ -25,9 +25,9 @@ jobs:
 
       - name: Generar el sitio estático
         run: npm run build
-
-      - name: Subir archivos a GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: gh-pages
-          folder: dist
+      
+      - name: instalar surge
+        run: npm install -g surge
+      
+      - name: Desplegar en Surge
+        run: surge ./dist unsuitable-distance.surge.sh --token ${{ secrets.SURGE_TOKEN }}
