@@ -6,6 +6,6 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  site: 'https://yarbisbeme.github.io/',
-  base: '/LandingPageMaranatha/',
+  site: 'https://sananosmaranata.surge.sh/', // Opcional
+  outDir: 'dist',
 });
