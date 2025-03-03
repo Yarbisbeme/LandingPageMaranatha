@@ -3,7 +3,7 @@ name: Deploy Astro to surge
 on:
   push:
     branches:
-      - feauture/deploy
+      - feauture/home
 
 jobs:
   deploy:
