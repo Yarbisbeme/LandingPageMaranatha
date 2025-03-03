@@ -1,0 +1,68 @@
+<section class="w-full h-screen px-8 py-10 bg-gradient-to-b from-amber-950 via-amber-800 to-amber-950"> 
+    <div class="w-full h-full rounded-4xl flex flex-col md:flex-row justify-center items-center bg-white overflow-hidden scroll-animate">
+        <div class="md:w-5/12 w-full h-full flex flex-col justify-center items-center bg-blue-100 md:rounded-l-4xl">
+            <img class="w-[90%] " src="https://bodafulana.my.canva.site/church-website-in-light-blue-denim-blue-simple-blocks-style/_assets/media/8a787832e46422338f904d8f91ba294b.png" alt="Logo iglesia">    
+        </div>
+        <div class="md:w-7/12 p-[10%] md:p-0 justify-center w-full h-full flex flex-col my-10 md:my-0 md:mx-8">
+            <h1 class="text-4xl lg:text-6xl font-extrabold text-amber-950 leading-tight mb-4">
+                ¿Quiénes Somos?
+            </h1>
+            <h2 class="text-lg md:text-xl text-gray-700 mb-6">
+                La Iglesia Cristiana Evangélica Oasis de Bendición II es una comunidad de fe comprometida con Jesús Cristo y fundamentada en la Santa Palabra de Dios, guiado y dirigido por el Espíritu Santo. Somos una iglesia que tiene sus fundamentos en el pentecostés.
+            </h2>
+            
+            <p class="hidden lg:block text-lg text-gray-700 mb-4">
+                Nos caracterizamos por ser una iglesia donde sus feligreses obedecen a Dios, y le rinden culto de la siguiente manera
+            </p>
+
+            <ul class="list-disc list-inside text-md lg:block md:text-lg text-gray-700 space-y-2 hidden">
+                <li>Adoración a Dios en cultos dinámicos</li>
+                <li>Ministrando a todas las edades</li>
+                <li>Orando y fortaleciendo a la familia</li>
+                <li>Reconciliando al mundo con Dios</li>
+                <li>Evangelizando con propósito</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Definir la animación de despliegue y aparición */
+    .scroll-animate {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: transform 1s ease-out, opacity 1s ease-out;
+    }
+
+    .scroll-animate.in-view {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Se activará cuando el elemento entre en el viewport */
+    .scroll-animate {
+        will-change: transform, opacity;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const images = document.querySelectorAll('.scroll-animate');
+    
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view'); // Activa la animación cuando está visible
+                } else {
+                    entry.target.classList.remove('in-view'); // Elimina la animación cuando no está visible
+                }
+            });
+        }, {
+            threshold: 0.5 // La animación se activa cuando la imagen esté al 50% visible
+        });
+    
+        images.forEach(image => {
+            observer.observe(image);
+        });
+    });
+</script>

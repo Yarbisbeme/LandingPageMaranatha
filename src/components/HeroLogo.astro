@@ -1,11 +1,13 @@
-<main class="overflow-hidden w-full min-h-screen flex flex-col justify-center items-center relative smoke-bg">
-    <section class="absolute top-0 left-0 w-full h-full flex justify-center items-center z-0">
+
+
+<main class="overflow-hidden w-full min-h-screen flex flex-col justify-center items-center">
+    <section class="absolute top-0 left-0 w-full h-full flex justify-center items-center z-0 overflow-hidden">
         <img class="hidden -translate-x-[40%] md:-translate-x-[60%] lg:md:-translate-x-[80%] " src="/arco.png" alt="arco" id="img1">
         <img class="hidden translate-x-[40%] -translate-y-[70%] md:translate-x-[60%] lg:md:translate-x-[80%] " src="/arco.png" alt="arco" id="img2">
     </section>
 
-    <section class="flex flex-col justify-center items-center z-10 relative w-full h-full ">
-        <span class="text-center block mt-2">
+    <section class="flex flex-col justify-center items-center z-10 relative w-full scroll-animate">
+        <span class="text-center block mt-2" id="fuente">
             <h3 class="uppercase text-xs text-center" id="mob">MINISTERIO OASIS DE BENDICION</h3>
             <h3 class="uppercase text-xs tracking-widest text-center " id="6">SEXTA CONVENCION</h3>
         </span>  
@@ -14,11 +16,27 @@
             <img class="hidden w-[280px] sm:scale-[1.1] sm:-mt-22 -mt-20 z-10" src="/maranata.svg" alt="Maranata" id="maranata">
             <img class="hidden sm:-mt-60 -mt-[53%] -mb-44 z-20" src="/personass.png" alt="Personas" id="personas">
         </div>
+        <section class="md:hidden flex flex-col text-center items-center mt-12" id="persona">
+            <h1 class="text-4xl md:text-6xl text-amber-950 leading-tight mb-2 hola"> 
+                20 AL 22 MARZO 7PM 
+            </h1>
+            <h3 class="text-lg md:text-xl font-medium"> 
+                Seran tres noches de salvacion y milagros
+            </h3>
+            <div class="flex gap-x-2">
+                <img class="w-4 h-auto" src="/location.svg" alt="">
+                <h4 class="text-xs">PLAY DE SOFTBALL DE VILLA FUNDACIÓN, <br/> PROXIMO AL PARQUE</h4>
+            </div>
+        </section>
     </section>
 </main>
 
-
 <style>
+
+.hola {
+    font-family: 'Anton', sans-serif;
+}
+
 @keyframes fadeIn {
     0% {
         opacity: 0;
@@ -32,6 +50,44 @@
     animation: fadeIn 2s ease-in forwards; 
 }
 
+.scroll-animate {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: transform 1s ease-out, opacity 1s ease-out;
+    }
+
+    .scroll-animate.in-view {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Se activará cuando el elemento entre en el viewport */
+    .scroll-animate {
+        will-change: transform, opacity;}
+
 
 </style>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const images = document.querySelectorAll('.scroll-animate');
+    
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view'); // Activa la animación cuando está visible
+                } else {
+                    entry.target.classList.remove('in-view'); // Elimina la animación cuando no está visible
+                }
+            });
+        }, {
+            threshold: 0.5 // La animación se activa cuando la imagen esté al 50% visible
+        });
+    
+        images.forEach(image => {
+            observer.observe(image);
+        });
+    });
+</script>
 
