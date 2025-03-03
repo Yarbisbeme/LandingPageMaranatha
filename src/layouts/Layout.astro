@@ -1,29 +1,82 @@
----
-// Supports weights 400-900
-import '@fontsource-variable/playfair-display';
----
-
-
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" href="/sananos.svg?v=1" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Sananos Maranata</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="/sananos.svg?v=1" />
+    <title>Sananos Maranata</title>
+    <style>
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        html, body {
+            font-family: 'Playfair Display Variable', serif;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+        }
+        #lottie-container {
+            width: 150px;  /* Ajusta el tamaño del contenedor */
+            height: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        video {
+            width: 100%;  /* El video ocupará el 100% del ancho del contenedor */
+            height: auto;  /* La altura se ajusta automáticamente */
+            object-fit: contain;  /* Asegura que el video se ajuste sin recortes */
+        }
+    </style>
+</head>
+<body>
+    <div id="loader">
+        <div id="lottie-container">
+            <video id="video-loader" autoplay loop muted>
+                <source src="/angel.webm" type="video/webm" />
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
 
-<style>
-	html,
-	body {
-		font-family: 'Playfair Display Variable', serif;
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+    <slot></slot>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            window.addEventListener("load", function () {
+                // Esconde el loader una vez que la página esté completamente cargada
+                document.getElementById("loader").style.display = "none";
+                
+                // Añadir la animación fade-in a las imágenes una vez que el loader esté oculto
+                document.getElementById("mob").classList.remove("hidden");
+                document.getElementById("mob").classList.add("fade-in");
+                document.getElementById("6").classList.remove("hidden");
+                document.getElementById("6").classList.add("fade-in");
+                document.getElementById("img1").classList.remove("hidden");
+                document.getElementById("img1").classList.add("fade-in");
+
+                document.getElementById("img2").classList.remove("hidden");
+                document.getElementById("img2").classList.add("fade-in");
+
+                document.getElementById("sananos").classList.remove("hidden");
+                document.getElementById("sananos").classList.add("fade-in");
+
+                document.getElementById("maranata").classList.remove("hidden");
+                document.getElementById("maranata").classList.add("fade-in");
+
+                document.getElementById("personas").classList.remove("hidden");
+                document.getElementById("personas").classList.add("fade-in");
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,38 +1,37 @@
-<main class="overflow-hidden w-full h-screen flex flex-col justify-center items-center relative">
+<main class="overflow-hidden w-full min-h-screen flex flex-col justify-center items-center relative smoke-bg">
     <section class="absolute top-0 left-0 w-full h-full flex justify-center items-center z-0">
-        <img class="-translate-x-[40%]" src="/arco.png" alt="arco">
-        <img class="translate-x-[40%] -translate-y-[70%] " src="/arco.png" alt="arco">
+        <img class="hidden -translate-x-[40%] md:-translate-x-[60%] lg:md:-translate-x-[80%] " src="/arco.png" alt="arco" id="img1">
+        <img class="hidden translate-x-[40%] -translate-y-[70%] md:translate-x-[60%] lg:md:translate-x-[80%] " src="/arco.png" alt="arco" id="img2">
     </section>
-    <section class="flex flex-col justify-center items-center z-10 relative w-full h-full">
-        <span class="text-center block">
-            <h3 class="uppercase text-xs text-center">MINISTERIO OASIS DE BENDICION</h3>
-            <h3 class="uppercase text-xs tracking-widest text-center">SEXTA CONVENCION</h3>
+
+    <section class="flex flex-col justify-center items-center z-10 relative w-full h-full ">
+        <span class="text-center block mt-2">
+            <h3 class="uppercase text-xs text-center" id="mob">MINISTERIO OASIS DE BENDICION</h3>
+            <h3 class="uppercase text-xs tracking-widest text-center " id="6">SEXTA CONVENCION</h3>
         </span>  
-        <div class="flex flex-col items-center w-full max-w-[500px] sm:-mt-4">
-            <img class="w-[500px] scale-[1.2] -my-12" src="/sananos.svg" alt="">
-            <img class="w-[280px] sm:scale-[1.1] sm:-mt-22 -mt-20 z-10" src="/maranata.svg" alt="">
-            <img class="sm:-mt-60 -mt-[53%] -mb-44 z-20" src="/personas.png" alt="">
+        <div class="flex flex-col items-center w-full max-w-[500px] sm:-mt-4 mx-auto">
+            <img class="hidden w-[500px] scale-[1.2] -my-12 " src="/sananos.svg" alt="Sananos" id="sananos">
+            <img class="hidden w-[280px] sm:scale-[1.1] sm:-mt-22 -mt-20 z-10" src="/maranata.svg" alt="Maranata" id="maranata">
+            <img class="hidden sm:-mt-60 -mt-[53%] -mb-44 z-20" src="/personass.png" alt="Personas" id="personas">
         </div>
     </section>
 </main>
 
 
+<style>
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 2s ease-in forwards; 
+}
 
 
-<!-- <main class="w-full flex flex-col justify-center items-center relative">
-    <div class="flex flex-row w-full relative">
-        <img class="relative" src="/src/assets/images/arco.png" alt="arco">
-        <img class="relative" src="/src/assets/images/arco.png" alt="arco">
-    </div>
-    <section class="flex flex-col items-center absolute z-20">
-        <span class=" text-center">
-            <h3 class="uppercase text-xs" >MINISTERIO OASIS DE BENDICION</h3>
-            <h3 class="uppercase text-xs tracking-widest" >SEXTA CONVENCION</h3>
-        </span>
-        <div class="flex flex-col items-center scale-[1.1] -mt-14 sm:-mt-[10%] md:-mt-20 xl:-mt-20">
-            <img class="xl:w-[40%] sm:w-[500px] ] " src="/sananos.svg" alt="">
-            <img class="xl:w-[22%] xl:mt-36 sm:w-[260px] sm:mt-[137px] w-[65%] mt-[26%] z-10" src="/maranata.svg" alt="">
-            <img class="xl:w-[35%] xl:mt-[70px] sm:w-[450px] sm:mt-[60px] z-20 " src="/src/assets/images/personas.png" alt="">
-        </div>  
-    </section>  
-</main> -->
+</style>
+
