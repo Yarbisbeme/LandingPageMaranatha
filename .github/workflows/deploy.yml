@@ -3,7 +3,7 @@ name: Deploy to Surge
 on:
   push:
     branches:
-      - main  # Se ejecuta cuando haces push a main
+      - main 
 
 jobs:
   deploy:
