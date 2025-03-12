@@ -3,7 +3,7 @@ name: Deploy to Surge
 on:
   push:
     branches:
-      - main  # Se ejecuta cuando haces push a main
+      - main 
 
 jobs:
   deploy:
@@ -13,19 +13,27 @@ jobs:
       - name: Checkout del repositorio
         uses: actions/checkout@v3
 
+      - name: Borrar la caché de dependencias
+        run: rm -rf node_modules package-lock.json
+
       - name: Instalar Node.js 20
         uses: actions/setup-node@v3
         with:
-          node-version: 20  # Cambiado a 20 para compatibilidad con Astro
+          node-version: 20
 
       - name: Instalar dependencias
         run: npm install
 
-      - name: Generar build
-        run: npm run build  # Asegúrate de que tu build genere la carpeta dist
+      - name: Limpiar y generar build
+        run: |
+          rm -rf dist
+          npm run build
+          ls -l dist  # Muestra el contenido de dist para depuración
 
       - name: Instalar Surge
         run: npm install -g surge
 
       - name: Desplegar en Surge
-        run: surge ./dist sananosmaranatasurge.sh --token ${{ secrets.SURGE_TOKEN }}
+        run: |
+          surge teardown sananosmaranatasurge.sh
+          surge ./dist sananosmaranatasurge.sh --token ${{ secrets.SURGE_TOKEN }}
